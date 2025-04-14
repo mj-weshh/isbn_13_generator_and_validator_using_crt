@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISBN-13 Generator & Validator</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ISBN-13 Generator & Validator</h1>
+            <p class="subtitle">Using Chinese Remainder Theorem</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="generate">Generate ISBN</button>
+            <button class="tab-btn" data-tab="validate">Validate ISBN</button>
+            <button class="tab-btn" data-tab="batch">Batch Generate</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Generate ISBN Tab -->
+            <div id="generate" class="tab-pane active">
+                <h2>Generate a Single ISBN-13</h2>
+                <div class="form-group">
+                    <label for="country-code">Country Code (1 digit):</label>
+                    <input type="text" id="country-code" maxlength="1" pattern="[0-9]" placeholder="3">
+                </div>
+                <div class="form-group">
+                    <label for="publisher-code">Publisher Code (2 digits):</label>
+                    <input type="text" id="publisher-code" maxlength="2" pattern="[0-9]{2}" placeholder="16">
+                </div>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="use-multiples" checked>
+                    <label for="use-multiples">Use multiple of previous book number</label>
+                </div>
+                <button id="generate-btn" class="action-btn">Generate ISBN</button>
+                
+                <div id="result" class="result-box hidden">
+                    <h3>Generated ISBN:</h3>
+                    <p id="isbn-result" class="isbn-display"></p>
+                    <div class="details">
+                        <p>Status: <span id="status" class="valid">Valid</span></p>
+                        <p>Publisher Code: <span id="pub-code"></span></p>
+                        <p>Book Number: <span id="book-number"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Validate ISBN Tab -->
+            <div id="validate" class="tab-pane">
+                <h2>Validate an ISBN-13</h2>
+                <div class="form-group">
+                    <label for="isbn-input">Enter ISBN-13 (without hyphens):</label>
+                    <input type="text" id="isbn-input" maxlength="13" pattern="[0-9]{13}" placeholder="9783160001071">
+                </div>
+                <button id="validate-btn" class="action-btn">Validate ISBN</button>
+                
+                <div id="validation-result" class="result-box hidden">
+                    <h3>Validation Result:</h3>
+                    <p id="validation-isbn" class="isbn-display"></p>
+                    <div class="details">
+                        <p>Status: <span id="validation-status" class="unknown">Unknown</span></p>
+                        <table class="remainder-table">
+                            <tr>
+                                <th>Modulus</th>
+                                <th>Expected</th>
+                                <th>Actual</th>
+                                <th>Valid</th>
+                            </tr>
+                            <tr>
+                                <td>mod 3</td>
+                                <td id="expected-r3">-</td>
+                                <td id="actual-r3">-</td>
+                                <td id="valid-r3">-</td>
+                            </tr>
+                            <tr>
+                                <td>mod 5</td>
+                                <td id="expected-r5">-</td>
+                                <td id="actual-r5">-</td>
+                                <td id="valid-r5">-</td>
+                            </tr>
+                            <tr>
+                                <td>mod 7</td>
+                                <td id="expected-r7">-</td>
+                                <td id="actual-r7">-</td>
+                                <td id="valid-r7">-</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batch Generate Tab -->
+            <div id="batch" class="tab-pane">
+                <h2>Generate Multiple ISBNs</h2>
+                <div class="form-group">
+                    <label for="batch-country-code">Country Code (1 digit):</label>
+                    <input type="text" id="batch-country-code" maxlength="1" pattern="[0-9]" placeholder="3">
+                </div>
+                <div class="form-group">
+                    <label for="batch-publisher-code">Publisher Code (2 digits):</label>
+                    <input type="text" id="batch-publisher-code" maxlength="2" pattern="[0-9]{2}" placeholder="16">
+                </div>
+                <div class="form-group">
+                    <label for="batch-count">Number of ISBNs to generate (1-100):</label>
+                    <input type="number" id="batch-count" min="1" max="100" value="10">
+                </div>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="batch-use-multiples" checked>
+                    <label for="batch-use-multiples">Use multiple of previous book number</label>
+                </div>
+                <button id="batch-generate-btn" class="action-btn">Generate ISBNs</button>
+                
+                <div id="batch-result" class="result-box hidden">
+                    <h3>Generated ISBNs:</h3>
+                    <p id="batch-summary"></p>
+                    <button id="download-btn" class="secondary-btn">Download as Text File</button>
+                    <div class="isbn-list" id="isbn-list">
+                        <!-- ISBNs will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>ISBN-13 CRT Generator &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html> 

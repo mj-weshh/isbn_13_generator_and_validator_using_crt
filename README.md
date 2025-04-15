@@ -10,6 +10,12 @@ A web application for generating and validating ISBN-13 codes using the Chinese 
 - Download generated ISBNs as text files
 - Clean, minimalistic user interface
 
+## Web Interface
+
+The application provides a clean, intuitive web interface for generating and validating ISBN-13 codes:
+
+![ISBN-13 Generator and Validator Web Interface](screenshots/web_interface.png)
+
 ## Requirements
 
 - Python 3.6+

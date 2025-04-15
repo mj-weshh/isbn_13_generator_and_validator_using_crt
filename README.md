@@ -14,7 +14,7 @@ A web application for generating and validating ISBN-13 codes using the Chinese 
 
 The application provides a clean, intuitive web interface for generating and validating ISBN-13 codes:
 
-![ISBN-13 Generator and Validator Web Interface](screenshots/web_interface.png)
+![ISBN-13 Generator and Validator Web Interface](./screenshots/web_interface.png)
 
 ## Requirements
 

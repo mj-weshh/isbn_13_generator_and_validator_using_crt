@@ -24,7 +24,7 @@ This project creates and checks these special book name tags (ISBNs) using a cle
 
 ISBN stands for "International Standard Book Number." It's a unique number given to every published book, just like how each person has a unique fingerprint.
 
-### For 5-Year-Olds:
+
 Imagine if every toy in the world had its own special number. No matter where you go, you could find your exact favorite teddy bear using this number. ISBNs are like that for books! Each book gets its own special number so we can find it anywhere.
 
 ### ISBN-13 Structure:
@@ -32,7 +32,7 @@ Imagine if every toy in the world had its own special number. No matter where yo
 An ISBN-13 looks like this: **978-3-16-148410-0**
 
 Let's break it down:
-```
+<pre>
 ┌─────┬───┬─────┬───────────┬────┐
 │ 978 │ 3 │ 16  │  148410   │ 0  │
 ├─────┼───┼─────┼───────────┼────┤
@@ -43,7 +43,7 @@ Let's break it down:
   CC = Country code
   PUB = Publisher code
   CD = Check digit
-```
+</pre>
 
 - **978**: This is the prefix that tells us it's a book (not a magazine or something else)
 - **3**: This is the country code (where the publisher is from)
@@ -71,7 +71,7 @@ Imagine you have several different-sized baskets. When you put some marbles in t
 
 The Chinese Remainder Theorem helps us figure out the smallest number of marbles that would give these exact leftovers. It's like a mathematical puzzle solver!
 
-### For 5-Year-Olds:
+ 
 Let's play a game! I'm thinking of a secret number, and I'll give you some clues:
 - If I put my secret number of candies in groups of 3, I have 1 candy left over
 - If I put them in groups of 5, I have 2 candies left over
@@ -88,7 +88,7 @@ Let's say:
 
 What's the smallest number that satisfies all these conditions?
 
-```
+<pre>
   3 )  23  
      - 21
      ----
@@ -103,13 +103,13 @@ What's the smallest number that satisfies all these conditions?
      - 21
      ----
        2 ✓
-```
+</pre>
 
 The answer is 23! The Chinese Remainder Theorem gives us a way to find this number systematically.
 
 ### Visual Explanation of CRT:
 
-```
+<pre>
 Step 1: Start with our moduli: 3, 5, and 7
 Step 2: Calculate M = 3 × 5 × 7 = 105
 Step 3: For each modulus, find M_i = M ÷ modulus
@@ -125,7 +125,7 @@ Step 5: Calculate the result:
         140 + 63 + 30 = 233
 Step 6: Find smallest positive value:
         233 mod 105 = 23
-```
+</pre>
 
 ## How Our ISBN Generator Works
 
@@ -139,7 +139,7 @@ Our ISBN generator creates valid ISBN-13 numbers using the Chinese Remainder The
 3. We then create a number that, when combined with our prefix, will give these exact remainders
 4. This ensures our ISBN follows the mathematical patterns needed to be valid
 
-### For 5-Year-Olds:
+ 
 Imagine we're making a secret code for your treasure map. The code needs to follow special rules:
 - When counted by 3s, we need 1 left over
 - When counted by 5s, we need 1 left over
@@ -149,7 +149,7 @@ Our ISBN maker is like a magic treasure code maker that follows these special ru
 
 ### Flowchart of ISBN Generation:
 
-```
+<pre>
 ┌───────────────────┐
 │   Start with      │
 │  Prefix: 978-3-16 │
@@ -188,7 +188,7 @@ Our ISBN maker is like a magic treasure code maker that follows these special ru
 │   Return Valid    │
 │       ISBN        │
 └───────────────────┘
-```
+</pre>
 
 ## The Algorithm Step-by-Step
 
@@ -205,7 +205,7 @@ We calculate what remainders we need:
 - r5 = publisherCode % 5 (16 % 5 = 1)
 - r7 = publisherCode % 7 (16 % 7 = 2)
 
-### For 5-Year-Olds:
+ 
 Think of it like this: If you have 16 cookies and share them equally with 3 friends, you'll have 1 cookie left over. If you share 16 cookies with 5 friends, you'll also have 1 cookie left over. If you share 16 cookies with 7 friends, you'll have 2 cookies left over. Our book number needs to follow this same pattern!
 
 ### Step 3: Generate the Book Number
@@ -264,7 +264,7 @@ if not isbn_storage.is_isbn_generated(isbn):
     return isbn
 ```
 
-### For 5-Year-Olds:
+ 
 Think of it like building a LEGO castle. We have the base (our prefix), and now we need to find just the right piece to put on top (our book number) so that the whole castle follows our special rules. Once we find it, we check that we haven't built this exact castle before!
 
 ## ISBN Validation Process
@@ -300,12 +300,12 @@ else:
     return "INVALID"
 ```
 
-### For 5-Year-Olds:
+ 
 It's like checking if someone knows the secret handshake to join your club. The handshake has three special moves, and if they do all three moves correctly, they can come in!
 
 ### Validation Flowchart:
 
-```
+<pre>
 ┌───────────────────┐
 │  Input ISBN-13    │
 └─────────┬─────────┘
@@ -337,7 +337,7 @@ It's like checking if someone knows the secret handshake to join your club. The 
 ┌─────────┐ ┌─────────┐
 │  VALID  │ │ INVALID │
 └─────────┘ └─────────┘
-```
+</pre>
 
 ## Technical Implementation
 
@@ -376,7 +376,7 @@ def chinese_remainder_theorem(remainders, moduli):
     return result % M
 ```
 
-### For 5-Year-Olds:
+ 
 Think of it like a treasure hunt where you have three different maps. Each map gives you a clue about where to dig:
 - Map 1 says "Start at the big oak tree and take 3 steps. Where you land is important!"
 - Map 2 says "Start at the rock and take 5 steps. Where you land is important!"
@@ -415,7 +415,7 @@ def mod_inverse(a, m):
         return x % m
 ```
 
-### For 5-Year-Olds:
+ 
 This part is like finding a special key that unlocks a door. If we have a lock numbered "7" and a key numbered "3", we need to figure out how many times to turn the key to open the lock. Our `mod_inverse` function helps us find that special number of turns!
 
 ## User Interface Design
@@ -432,7 +432,7 @@ The command-line interface lets you:
 
 ### Command-Line Example:
 
-```
+<pre>
 ============================================
   ISBN-13 CRT Generator and Validator
 ============================================
@@ -446,7 +446,7 @@ Menu Options:
   3. Validate an existing ISBN-13
   4. List all stored ISBNs
   5. Exit
-```
+</pre>
 
 ### Web Interface
 
@@ -458,7 +458,7 @@ The web interface provides a more visual way to interact with the application:
 
 ### Web Interface Layout:
 
-```
+<pre>
 ┌────────────────────────────────────────────────┐
 │ ISBN-13 Generator & Validator                  │
 │ Using Chinese Remainder Theorem                │
@@ -482,9 +482,9 @@ The web interface provides a more visual way to interact with the application:
 │                                                │
 │ ISBN-13 CRT Generator © 2025                   │
 └────────────────────────────────────────────────┘
-```
+</pre>
 
-### For 5-Year-Olds:
+ 
 Our program has two ways to use it:
 1. Like talking to a robot through a walkie-talkie (command line)
 2. Like playing with a colorful toy with buttons to press (web interface)
@@ -493,7 +493,7 @@ Both do the same magic tricks with book numbers, but the second one is prettier 
 
 ## Project Structure
 
-```
+<pre>
 isbn_13_generator_and_validator_using_crt/
 ├── isbn13_crt.py         # Core Python implementation
 ├── app.py                # Flask web server
@@ -506,9 +506,9 @@ isbn_13_generator_and_validator_using_crt/
 ├── generated_isbns.json  # Storage for generated ISBNs
 ├── README.md             # Basic project information
 └── DOCUMENTATION.md      # This comprehensive documentation
-```
+</pre>
 
-### For 5-Year-Olds:
+ 
 Think of our project like a toy box:
 - `isbn13_crt.py` is the main toy that does all the cool stuff
 - `app.py` is a special helper that shows the toy on your computer screen
@@ -525,7 +525,7 @@ Some potential improvements for the future:
 4. Add visualizations to explain the Chinese Remainder Theorem
 5. Create an API for other developers to use
 
-### For 5-Year-Olds:
+ 
 Here are some cool new things we could add to our magical book number maker:
 1. Make it work with older types of book numbers too
 2. Make it work on phones so you can use it anywhere
@@ -538,7 +538,7 @@ This project demonstrates how a seemingly complex mathematical theorem can be ap
 
 The combination of mathematical principles, software engineering, and user interface design shows how different disciplines come together in modern computing projects.
 
-### For 5-Year-Olds:
+ 
 We used a really cool math trick that's thousands of years old to help make special numbers for books! It's like using ancient magic spells to help organize a modern library. This shows how things you learn in math class can be used to make helpful tools that people use every day!
 
 ## References

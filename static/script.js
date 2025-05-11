@@ -147,8 +147,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const count = parseInt(document.getElementById('batch-count').value) || 10;
         const useMultiples = document.getElementById('batch-use-multiples').checked;
         
-        if (count < 1 || count > 100) {
-            alert('Please enter a number between 1 and 100');
+        if (count < 1 || count > 250) {
+            alert('Please enter a number between 1 and 250');
             return;
         }
         

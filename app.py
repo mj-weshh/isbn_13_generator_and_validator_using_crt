@@ -95,8 +95,8 @@ def api_batch_generate():
     if not re.match(r'^\d{1,2}$', publisher_code):
         return jsonify({'error': 'Publisher code must be 1-2 digits (0-99)'}), 400
     
-    if count < 1 or count > 100:
-        return jsonify({'error': 'Count must be between 1 and 100'}), 400
+    if count < 1 or count > 250:
+        return jsonify({'error': 'Count must be between 1 and 250'}), 400
     
     # Format the publisher code as a two-digit string
     publisher_code = f"{int(publisher_code):02d}"

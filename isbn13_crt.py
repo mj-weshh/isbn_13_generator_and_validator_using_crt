@@ -510,9 +510,9 @@ def generate_multiple_isbns():
     
     # Get the number of ISBNs to generate
     count = get_valid_input(
-        "Enter the number of ISBNs to generate (1-100)",
-        r"^([1-9]|[1-9][0-9]|100)$",
-        "Please enter a number between 1 and 100."
+        "Enter the number of ISBNs to generate (1-250)",
+        r"^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|250)$",
+        "Please enter a number between 1 and 250."
     )
     count = int(count)
     

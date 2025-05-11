@@ -106,18 +106,26 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('expected-r3').textContent = data.expected_remainders[0];
             document.getElementById('expected-r5').textContent = data.expected_remainders[1];
             document.getElementById('expected-r7').textContent = data.expected_remainders[2];
+            document.getElementById('expected-r11').textContent = data.expected_remainders[3];
+            document.getElementById('expected-r13').textContent = data.expected_remainders[4];
             
             document.getElementById('actual-r3').textContent = data.actual_remainders[0];
             document.getElementById('actual-r5').textContent = data.actual_remainders[1];
             document.getElementById('actual-r7').textContent = data.actual_remainders[2];
+            document.getElementById('actual-r11').textContent = data.actual_remainders[3];
+            document.getElementById('actual-r13').textContent = data.actual_remainders[4];
             
             document.getElementById('valid-r3').textContent = data.expected_remainders[0] === data.actual_remainders[0] ? '✓' : '✗';
             document.getElementById('valid-r5').textContent = data.expected_remainders[1] === data.actual_remainders[1] ? '✓' : '✗';
             document.getElementById('valid-r7').textContent = data.expected_remainders[2] === data.actual_remainders[2] ? '✓' : '✗';
+            document.getElementById('valid-r11').textContent = data.expected_remainders[3] === data.actual_remainders[3] ? '✓' : '✗';
+            document.getElementById('valid-r13').textContent = data.expected_remainders[4] === data.actual_remainders[4] ? '✓' : '✗';
             
             document.getElementById('valid-r3').className = data.expected_remainders[0] === data.actual_remainders[0] ? 'valid' : 'invalid';
             document.getElementById('valid-r5').className = data.expected_remainders[1] === data.actual_remainders[1] ? 'valid' : 'invalid';
             document.getElementById('valid-r7').className = data.expected_remainders[2] === data.actual_remainders[2] ? 'valid' : 'invalid';
+            document.getElementById('valid-r11').className = data.expected_remainders[3] === data.actual_remainders[3] ? 'valid' : 'invalid';
+            document.getElementById('valid-r13').className = data.expected_remainders[4] === data.actual_remainders[4] ? 'valid' : 'invalid';
             
             // Show result box
             document.getElementById('validation-result').classList.remove('hidden');

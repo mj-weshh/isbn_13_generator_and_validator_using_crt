@@ -10,20 +10,24 @@ def check_isbn_crt(isbn):
     pub_r3 = publisher_code % 3
     pub_r5 = publisher_code % 5
     pub_r7 = publisher_code % 7
+    pub_r11 = publisher_code % 11
+    pub_r13 = publisher_code % 13
     
     # Calculate remainders for full ISBN
     isbn_r3 = full_num % 3
     isbn_r5 = full_num % 5
     isbn_r7 = full_num % 7
+    isbn_r11 = full_num % 11
+    isbn_r13 = full_num % 13
     
     # Check if the remainders match
-    is_valid = (pub_r3 == isbn_r3 and pub_r5 == isbn_r5 and pub_r7 == isbn_r7)
+    is_valid = (pub_r3 == isbn_r3 and pub_r5 == isbn_r5 and pub_r7 == isbn_r7 and pub_r11 == isbn_r11 and pub_r13 == isbn_r13)
     
     return {
         'isbn': isbn,
         'publisher_code': publisher_code,
-        'pub_remainders': [pub_r3, pub_r5, pub_r7],
-        'isbn_remainders': [isbn_r3, isbn_r5, isbn_r7],
+        'pub_remainders': [pub_r3, pub_r5, pub_r7, pub_r11, pub_r13],
+        'isbn_remainders': [isbn_r3, isbn_r5, isbn_r7, isbn_r11, isbn_r13],
         'is_valid': is_valid
     }
 
@@ -47,8 +51,8 @@ for i, isbn in enumerate(isbns, 1):
         invalid_count += 1
         print(f"ISBN #{i} is INVALID: {isbn}")
         print(f"  Publisher code: {result['publisher_code']}")
-        print(f"  Publisher remainders (mod 3,5,7): {result['pub_remainders']}")
-        print(f"  ISBN remainders (mod 3,5,7): {result['isbn_remainders']}")
+        print(f"  Publisher remainders (mod 3,5,7,11,13): {result['pub_remainders']}")
+        print(f"  ISBN remainders (mod 3,5,7,11,13): {result['isbn_remainders']}")
         print()
 
 # Print summary
